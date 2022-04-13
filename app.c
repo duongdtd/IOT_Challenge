@@ -202,6 +202,10 @@ void process_server_user_write_request(sl_bt_msg_t *evt)
       	    {
       	      send_data(&notifyEnabled, &app_connection, &bmp, 3);
       	    }
+      	  else if(header == 5 && len ==1)
+      	    {
+      	      send_all_data(&notifyEnabled, &app_connection, &te, &spo2, &bmp);
+      	    }
     }
 }
   /**************************************************************************//**

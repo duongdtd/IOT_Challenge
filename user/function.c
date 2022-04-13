@@ -77,6 +77,38 @@ send_data(uint8_t *notifyEnabled,uint8_t *app_connection,float *data,uint8_t typ
     app_log("send erorr\n");
 
 }
+void send_all_data(uint8_t *notifyEnabled,uint8_t *app_connection,float *temperature, float *spo2, float *bmp)
+{
+  sl_status_t sc;
+   uint8_t buffer[10];
+   uint8_t arr[1];
+   uint16_t len = 11;
+   sl_sleeptimer_date_t date_time;
+   sl_sleeptimer_get_datetime(&date_time);
+   convert_data(arr, temperature);
+   buffer[0] = 4;
+   buffer[1] = arr[0];
+   buffer[2] = arr[1];
+   buffer[3] = (uint8_t) (*spo2);
+   buffer[4] = (uint8_t) (*bmp);
+   buffer[5] =date_time.month_day;
+   buffer[5] =date_time.month;
+   buffer[7] =date_time.year;
+   buffer[8] =date_time.hour;
+   buffer[9] =date_time.min;
+   buffer[10] =date_time.sec;
+   if (*notifyEnabled)
+     {
+       sc = sl_bt_gatt_server_send_notification (*app_connection, gattdb_data_ch,
+                                                 len, buffer);
+     }
+   if (sc == SL_STATUS_OK)
+     {
+       app_log("send ok\n");
+     }
+   else
+     app_log("send erorr\n");
+}
 void
 clear_data (void)
 {
