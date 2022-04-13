@@ -1,6 +1,6 @@
 user/i2c_lib.o: ../user/i2c_lib.c \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h \
- C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/i2c_lib.h \
+ ../user/i2c_lib.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_i2c.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\em_device.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\bgm220pc22hna.h \
@@ -68,7 +68,7 @@ user/i2c_lib.o: ../user/i2c_lib.c \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
-C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/i2c_lib.h:
+../user/i2c_lib.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_i2c.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\em_device.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\bgm220pc22hna.h:

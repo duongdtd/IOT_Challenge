@@ -19,6 +19,7 @@ SUBDIRS := \
 . \
 autogen \
 gecko_sdk_4.0.2/app/bluetooth/common/ota_dfu \
+gecko_sdk_4.0.2/app/bluetooth/common/simple_timer \
 gecko_sdk_4.0.2/app/common/util/app_log \
 gecko_sdk_4.0.2/hardware/board/src \
 gecko_sdk_4.0.2/platform/Device/SiliconLabs/BGM22/Source/GCC \
@@ -27,6 +28,7 @@ gecko_sdk_4.0.2/platform/bootloader/api \
 gecko_sdk_4.0.2/platform/bootloader/app_properties \
 gecko_sdk_4.0.2/platform/common/src \
 gecko_sdk_4.0.2/platform/common/toolchain/src \
+gecko_sdk_4.0.2/platform/driver/pwm/src \
 gecko_sdk_4.0.2/platform/emdrv/gpiointerrupt/src \
 gecko_sdk_4.0.2/platform/emdrv/nvm3/src \
 gecko_sdk_4.0.2/platform/emlib/src \

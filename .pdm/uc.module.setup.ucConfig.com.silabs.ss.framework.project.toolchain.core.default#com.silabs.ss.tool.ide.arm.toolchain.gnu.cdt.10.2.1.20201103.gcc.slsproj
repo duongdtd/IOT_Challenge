@@ -6,8 +6,8 @@
       <file name="ota_dfu.xml" generated="true" linked="false"/>
     </folder>
     <file name="sl_memory_config.h" generated="true" linked="false"/>
-    <file name="sl_device_init_lfrco_config.h" generated="true" linked="false"/>
     <file name="sl_device_init_dcdc_config.h" generated="true" linked="false"/>
+    <file name="sl_device_init_lfrco_config.h" generated="true" linked="false"/>
     <file name="sl_bluetooth_config.h" generated="true" linked="false"/>
     <file name="sl_hfxo_manager_config.h" generated="true" linked="false"/>
     <file name="sl_board_control_config.h" generated="true" linked="false"/>
@@ -17,6 +17,7 @@
     <file name="sl_sleeptimer_config.h" generated="true" linked="false"/>
     <file name="sl_power_manager_config.h" generated="true" linked="false"/>
     <file name="sl_device_init_lfxo_config.h" generated="true" linked="false"/>
+    <file name="sl_pwm_init_buzzer_config.h" generated="true" linked="false"/>
     <file name="sl_rail_util_pti_config.h" generated="true" linked="false"/>
     <file name="nvm3_default_config.h" generated="true" linked="false"/>
     <file name="app_properties_config.h" generated="true" linked="false"/>

@@ -7,6 +7,7 @@
 
 #ifndef USER_TEST_VARIABLE_H_
 #define USER_TEST_VARIABLE_H_
+
 #include "stdio.h"
 #include "stdint.h"
 struct Quaternion_Base{
@@ -33,8 +34,6 @@ void setVectorInt16_Init(struct VectorInt16_Base * v);
 
 /// VectorFloat ///
 void setVectorFloat_Init(struct VectorFloat_Base * v);
-
-
 
 
 #endif /* USER_TEST_VARIABLE_H_ */

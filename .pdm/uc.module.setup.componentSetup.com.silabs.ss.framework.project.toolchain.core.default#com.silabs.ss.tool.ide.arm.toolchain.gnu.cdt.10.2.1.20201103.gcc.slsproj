@@ -253,6 +253,7 @@
           <file name="em_rtcc.c" uri="studio:/sdk/platform/emlib/src/em_rtcc.c"/>
           <file name="em_se.c" uri="studio:/sdk/platform/emlib/src/em_se.c"/>
           <file name="em_system.c" uri="studio:/sdk/platform/emlib/src/em_system.c"/>
+          <file name="em_timer.c" uri="studio:/sdk/platform/emlib/src/em_timer.c"/>
           <file name="em_usart.c" uri="studio:/sdk/platform/emlib/src/em_usart.c"/>
         </folder>
         <folder name="inc">
@@ -275,7 +276,18 @@
           <file name="em_rtcc.h" uri="studio:/sdk/platform/emlib/inc/em_rtcc.h"/>
           <file name="em_se.h" uri="studio:/sdk/platform/emlib/inc/em_se.h"/>
           <file name="em_system.h" uri="studio:/sdk/platform/emlib/inc/em_system.h"/>
+          <file name="em_timer.h" uri="studio:/sdk/platform/emlib/inc/em_timer.h"/>
           <file name="em_usart.h" uri="studio:/sdk/platform/emlib/inc/em_usart.h"/>
+        </folder>
+      </folder>
+      <folder name="driver">
+        <folder name="pwm">
+          <folder name="src">
+            <file name="sl_pwm.c" uri="studio:/sdk/platform/driver/pwm/src/sl_pwm.c"/>
+          </folder>
+          <folder name="inc">
+            <file name="sl_pwm.h" uri="studio:/sdk/platform/driver/pwm/inc/sl_pwm.h"/>
+          </folder>
         </folder>
       </folder>
       <folder name="radio">
@@ -348,6 +360,10 @@
           <folder name="ota_dfu">
             <file name="sl_ota_dfu.c" uri="studio:/sdk/app/bluetooth/common/ota_dfu/sl_ota_dfu.c"/>
             <file name="sl_ota_dfu.h" uri="studio:/sdk/app/bluetooth/common/ota_dfu/sl_ota_dfu.h"/>
+          </folder>
+          <folder name="simple_timer">
+            <file name="sl_simple_timer.c" uri="studio:/sdk/app/bluetooth/common/simple_timer/sl_simple_timer.c"/>
+            <file name="sl_simple_timer.h" uri="studio:/sdk/app/bluetooth/common/simple_timer/sl_simple_timer.h"/>
           </folder>
         </folder>
       </folder>
@@ -689,7 +705,7 @@
   <file name="readme_img2.png" linked="false" uri="studio:/project/readme_img2.png"/>
   <file name="readme_img3.png" linked="false" uri="studio:/project/readme_img3.png"/>
   <file name="readme_img4.png" linked="false" uri="studio:/project/readme_img4.png"/>
-  <file name="readme.md" linked="false" uri="studio:/sdk/app/bluetooth/documentation/example/soc_empty/readme.md"/>
+  <file name="readme.md" linked="false" uri="studio:/project/readme.md"/>
   <includePath uri="studio:/project/"/>
   <includePath uri="studio:/sdk/platform/Device/SiliconLabs/BGM22/Include"/>
   <includePath uri="studio:/sdk/app/common/util/app_assert"/>
@@ -717,6 +733,7 @@
   <includePath uri="studio:/sdk/app/bluetooth/common/ota_dfu"/>
   <includePath uri="studio:/sdk/platform/service/power_manager/inc"/>
   <includePath uri="studio:/sdk/util/third_party/crypto/sl_component/sl_psa_driver/inc"/>
+  <includePath uri="studio:/sdk/platform/driver/pwm/inc"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/common"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ble"/>
   <includePath uri="studio:/sdk/platform/radio/rail_lib/protocol/ieee802154"/>
@@ -728,6 +745,7 @@
   <includePath uri="studio:/sdk/util/third_party/crypto/sl_component/se_manager/inc"/>
   <includePath uri="studio:/sdk/util/third_party/crypto/sl_component/se_manager/src"/>
   <includePath uri="studio:/sdk/util/silicon_labs/silabs_core/memory_manager"/>
+  <includePath uri="studio:/sdk/app/bluetooth/common/simple_timer"/>
   <includePath uri="studio:/sdk/platform/common/toolchain/inc"/>
   <includePath uri="studio:/sdk/platform/service/system/inc"/>
   <includePath uri="studio:/sdk/platform/service/sleeptimer/inc"/>

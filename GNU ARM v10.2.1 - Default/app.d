@@ -101,22 +101,28 @@ app.o: ../app.c \
  ../app.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\common\util\app_log\sl_app_log.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\common\util\app_log\app_log.h \
- C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/led_buzzer.h \
- c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_chip.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\bluetooth\common\simple_timer\sl_simple_timer.h \
  C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/i2c_lib.h \
- c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_i2c.h \
- c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h \
- c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
  C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/lm75.h \
  C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/max30102.h \
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/bpm_spo2_calc.h \
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/gpio_intr.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h \
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/led_buzzer.h \
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/msc.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h \
  C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/mpu6050.h \
  C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/test_variable.h \
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/test_variable.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_rtcc.h \
- C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/gpio_intr.h \
- C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/test_variable.h
+ C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/function.h
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_common.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\em_device.h:
@@ -219,19 +225,25 @@ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\protocol\bluetooth\inc\sli_bt_ga
 ../app.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\common\util\app_log\sl_app_log.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\common\util\app_log\app_log.h:
-C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/led_buzzer.h:
-c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_chip.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_system.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\bluetooth\common\simple_timer\sl_simple_timer.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/i2c_lib.h:
-c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_i2c.h:
-c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h:
-c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/lm75.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/max30102.h:
+C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/bpm_spo2_calc.h:
+C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/gpio_intr.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_gpio.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_cmu_compat.h:
+C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/led_buzzer.h:
+C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/msc.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_msc_compat.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_ramfunc.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/mpu6050.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/test_variable.h:
-c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_rtcc.h:
-C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/gpio_intr.h:
 C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/test_variable.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_rtcc.h:
+C\:\Users\ADMIN\SimplicityStudio\v5_workspace\covid_care\user/function.h:

@@ -22,6 +22,8 @@
 #include "sl_mbedtls.h"
 #include "sl_mpu.h"
 #include "nvm3_default.h"
+#include "sl_pwm_instances.h"
+#include "sl_simple_timer.h"
 #include "sl_iostream_init_instances.h"
 #include "sl_power_manager.h"
 
@@ -45,6 +47,7 @@ void sl_platform_init(void)
 void sl_driver_init(void)
 {
   GPIOINT_Init();
+  sl_pwm_init_instances();
 }
 
 void sl_service_init(void)
@@ -76,6 +79,7 @@ void sl_platform_process_action(void)
 
 void sl_service_process_action(void)
 {
+  sli_simple_timer_step();
 }
 
 void sl_stack_process_action(void)

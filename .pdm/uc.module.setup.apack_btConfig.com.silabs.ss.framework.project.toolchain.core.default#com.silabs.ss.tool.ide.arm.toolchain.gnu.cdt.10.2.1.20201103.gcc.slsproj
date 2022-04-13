@@ -4,5 +4,5 @@
     <file name="gatt_db.c" builtin="true" generated="true"/>
     <file name="gatt_db.h" builtin="true" generated="true"/>
   </folder>
-  <includePath uri="file:/C:/Users/ADMIN/SimplicityStudio/v5_workspace/covid_care_2/autogen"/>
+  <includePath uri="studio:/project/autogen"/>
 </project>

@@ -9,7 +9,7 @@
     <!--Device Name-->
     <characteristic const="false" id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
       <informativeText/>
-      <value length="13" type="utf-8" variable_length="false">Covid Care</value>
+      <value length="13" type="utf-8" variable_length="false">Empty Example</value>
       <properties>
         <read authenticated="false" bonded="false" encrypted="false"/>
         <write authenticated="false" bonded="false" encrypted="false"/>
@@ -49,56 +49,25 @@
     </characteristic>
   </service>
   
-  <!--Heart Rate-->
-  <service advertise="false" id="heart_rate" name="Heart Rate" requirement="mandatory" sourceId="org.bluetooth.service.heart_rate" type="primary" uuid="180D">
-    <informativeText>Abstract:  This service exposes heart rate and other data from a Heart Rate Sensor intended for fitness applications.  Summary:  The HEART RATE Service exposes heart rate and other data related to a heart rate sensor intended for fitness applications.  </informativeText>
-    
-    <!--Heart Rate Measurement-->
-    <characteristic const="false" id="heart_rate_measurement" name="Heart Rate Measurement" sourceId="org.bluetooth.characteristic.heart_rate_measurement" uuid="2A37">
-      <informativeText/>
-      <value length="8" type="hex" variable_length="false"/>
-      <properties>
-        <indicate authenticated="false" bonded="false" encrypted="false"/>
-      </properties>
-    </characteristic>
-  </service>
-  
   <!--Custom Service-->
-  <service advertise="true" id="" name="Custom Service" requirement="mandatory" sourceId="" type="primary" uuid="12345678-1234-1234-1234-12345678910a">
+  <service advertise="true" name="Custom Service" requirement="mandatory" sourceId="" type="primary" uuid="12345678-1234-1234-1234-12345678910a">
     <informativeText/>
     
-    <!--Temperature-->
-    <characteristic const="false" id="temp_ch" name="Temperature" sourceId="" uuid="12345678-1234-1234-1234-12345678910a">
+    <!--Data-->
+    <characteristic const="false" id="data_ch" name="Data" sourceId="" uuid="12345678-1234-1234-1234-12345678910a">
       <informativeText/>
-      <value length="8" type="hex" variable_length="false">00</value>
+      <value length="0" type="user" variable_length="false"/>
       <properties>
-        <read authenticated="false" bonded="false" encrypted="false"/>
-        <write authenticated="false" bonded="false" encrypted="false"/>
-        <indicate authenticated="false" bonded="false" encrypted="false"/>
         <notify authenticated="false" bonded="false" encrypted="false"/>
       </properties>
     </characteristic>
     
-    <!--SpO2-->
-    <characteristic const="false" id="spo2_ch" name="SpO2" sourceId="" uuid="12345678-1234-1234-1234-12345678910b">
+    <!--Device Send-->
+    <characteristic const="false" id="device_ch" name="Device Send" sourceId="" uuid="12345678-1234-1234-1234-12345678910b">
       <informativeText/>
-      <value length="7" type="hex" variable_length="false">00</value>
+      <value length="0" type="user" variable_length="false"/>
       <properties>
-        <read authenticated="false" bonded="false" encrypted="false"/>
-        <indicate authenticated="false" bonded="false" encrypted="false"/>
-        <notify authenticated="false" bonded="false" encrypted="false"/>
-      </properties>
-    </characteristic>
-    
-    <!--bmp-->
-    <characteristic const="false" id="bmp_ch" name="bmp" sourceId="" uuid="12345678-1234-1234-1234-12345678910c">
-      <informativeText/>
-      <value length="7" type="hex" variable_length="false">00</value>
-      <properties>
-        <read authenticated="false" bonded="false" encrypted="false"/>
         <write authenticated="false" bonded="false" encrypted="false"/>
-        <indicate authenticated="false" bonded="false" encrypted="false"/>
-        <notify authenticated="false" bonded="false" encrypted="false"/>
       </properties>
     </characteristic>
   </service>

@@ -19,6 +19,8 @@
     <file name="sl_mbedtls_config_transform_autogen.h" builtin="true" generated="true"/>
     <file name="sl_power_manager_handler.c" builtin="true" generated="true"/>
     <file name="psa_crypto_config_autogen.h" builtin="true" generated="true"/>
+    <file name="sl_pwm_init.c" builtin="true" generated="true"/>
+    <file name="sl_pwm_instances.h" builtin="true" generated="true"/>
     <file name="linkerfile.ld" builtin="true" generated="true"/>
   </folder>
   <includePath uri="studio:/project/autogen"/>

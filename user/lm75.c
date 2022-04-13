@@ -5,19 +5,20 @@
  *      Author: Ngo Minh Khanh
  */
 
-#include <i2c_lib.h>
-#include <lm75.h>
+#include "i2c_lib.h"
+#include "lm75.h"
 #include "app.h"
 //
 /**
-* @brief      Read config register of LM75
-*
-* @return     Value of LM75 config register
-*/
-uint8_t LM75_ReadConfig(void){
-  uint8_t config;
-  i2c_read(LM75_ADDRESS,LM75_CONFIGURATION,&config,1);
-  return config;
+ * @brief      Read config register of LM75
+ *
+ * @return     Value of LM75 config register
+ */
+uint8_t LM75_ReadConfig (void)
+{
+	uint8_t config;
+	i2c_read (LM75_ADDRESS, LM75_CONFIGURATION, &config, 1);
+	return config;
 }
 
 /**
@@ -25,21 +26,23 @@ uint8_t LM75_ReadConfig(void){
  *
  * @param[in]  reg   -   address of temperature register
  * @return     Value of temperature
-*/
-float LM75_ReadTemperature_9BitReg()
+ */
+float LM75_ReadTemperature_9BitReg ()
 {
-  uint16_t value;
-  i2c_read(LM75_ADDRESS,LM75_TEMPERATURE,(uint8_t*)&value,2);
+	uint16_t value;
+	i2c_read (LM75_ADDRESS, LM75_TEMPERATURE, (uint8_t*) &value, 2);
 
-  value = ((( value >> 8 ) | ( value << 8 )) >> 7) & 0x01FF;
+	value = (((value >> 8) | (value << 8)) >> 7) & 0x01FF;
 
-  if( value & 0x0100 ){                   // kiem tra bit dau
-    value = (0x01FE ^ value) + 1;         // đoi sang bu 2
-    return (float)( value * (-0.5f) );
-  }
-  else{
-    return (float)( value * 0.5f );
-  }
+	if (value & 0x0100)
+	{                   // kiem tra bit dau
+		value = (0x01FE ^ value) + 1;         // đoi sang bu 2
+		return (float) (value * (-0.5f));
+	}
+	else
+	{
+		return (float) (value * 0.5f);
+	}
 
 }
 
@@ -48,59 +51,62 @@ float LM75_ReadTemperature_9BitReg()
  *
  * @param[in]  reg   -   address of temperature register
  * @return     Value of temperature
-*/
-float LM75_ReadTemperature_11BitReg(void)
+ */
+float LM75_ReadTemperature_11BitReg (void)
 {
-  uint16_t value;
-  i2c_read(LM75_ADDRESS,LM75_TEMPERATURE,(uint8_t*)&value,2);
+	uint16_t value;
+	i2c_read (LM75_ADDRESS, LM75_TEMPERATURE, (uint8_t*) &value, 2);
 
-  value = ((( value >> 8 ) | ( value << 8 )) >> 5 ) & 0x07FF;
+	value = (((value >> 8) | (value << 8)) >> 5) & 0x07FF;
 
-  if(value & 0x0400){                       // kiem tra bit dau
-    value = (0x07FF ^ value) + 1;           // doi sang bu 2
-    return  (float)(value * ( -0.125f ) );
-  }
-  else{
-    return  (float)(value * 0.125f );
-  }
+	if (value & 0x0400)
+	{                       // kiem tra bit dau
+		value = (0x07FF ^ value) + 1;           // doi sang bu 2
+		return (float) (value * (-0.125f));
+	}
+	else
+	{
+		return (float) (value * 0.125f);
+	}
 }
-
 
 /**
  * @brief      Config LM75 into sleep mode (shutdown)
  *
  * @param[in]  mode    - 0: normal (đefaul); 1: shutdown
  * @return     none
-*/
-void LM75_Shutdown(uint8_t mode)
+ */
+void LM75_Shutdown ()
 {
-  uint8_t buff;
-  buff = LM75_ReadConfig();
-
-  if( mode ){
-    buff = buff | 0x01;
-  }
-  else{
-    buff = buff & 0xFE;
-  }
-  i2c_write(LM75_ADDRESS,LM75_CONFIGURATION,buff);
+	uint8_t buff;
+	buff = LM75_ReadConfig ();
+	buff = buff | 0x01;
+	i2c_writeByte (LM75_ADDRESS, LM75_CONFIGURATION, buff);
 }
 
+void LM75_Continue ()
+{
+	uint8_t buff;
+	buff = LM75_ReadConfig ();
+	buff = buff & 0xFE;
+	i2c_writeByte (LM75_ADDRESS, LM75_CONFIGURATION, buff);
+}
 
 /**
  * @brief    Read temperature
  *
  * @return   value of temperature
-*/
+ */
 
-float LM75_ReadTemperature(void){
+float LM75_ReadTemperature (void)
+{
 
-  #ifdef LM75_11BIT
-    return LM75_ReadTemperature_11BitReg();
+#ifdef LM75_11BIT
+	return LM75_ReadTemperature_11BitReg ();
 
-  #endif
+#endif
 
-  #ifdef LM75_9BIT
+#ifdef LM75_9BIT
     return LM75_ReadTemperature_9BitReg();
   #endif
 }

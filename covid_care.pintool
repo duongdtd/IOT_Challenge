@@ -6,12 +6,20 @@
     <property object="PORTIO" propertyId="portio.pti.enable.dout" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.pti.location.dframe" value="37"/>
     <property object="PORTIO" propertyId="portio.pti.location.dout" value="36"/>
+    <property object="PORTIO" propertyId="portio.timer0.enable.cc0" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.timer0.location.cc0" value="32"/>
+    <property object="PORTIO" propertyId="portio.usart1.enable.cts" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart1.enable.rts" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart1.enable.rx" value="Enabled"/>
     <property object="PORTIO" propertyId="portio.usart1.enable.tx" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.usart1.location.cts" value="8"/>
+    <property object="PORTIO" propertyId="portio.usart1.location.rts" value="7"/>
     <property object="PORTIO" propertyId="portio.usart1.location.rx" value="6"/>
     <property object="PORTIO" propertyId="portio.usart1.location.tx" value="5"/>
     <property object="PTI" propertyId="ABModule.selectedRequirement" value="pti%T%SL_RAIL_UTIL_PTI%T%sl_rail_util_pti_config.h"/>
     <property object="PTI" propertyId="ABPeripheral.included" value="true"/>
+    <property object="TIMER0" propertyId="ABModule.selectedRequirement" value="timer%T%SL_PWM_BUZZER%T%sl_pwm_init_buzzer_config.h"/>
+    <property object="TIMER0" propertyId="ABPeripheral.included" value="true"/>
     <property object="USART1" propertyId="ABModule.selectedRequirement" value="usart%T%SL_IOSTREAM_USART_VCOM%T%sl_iostream_usart_vcom_config.h"/>
     <property object="USART1" propertyId="ABPeripheral.included" value="true"/>
   </mode>

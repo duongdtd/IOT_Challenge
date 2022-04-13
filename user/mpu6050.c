@@ -211,8 +211,8 @@ static const unsigned char dmpMemory[MPU6050_DMP_CODE_SIZE] PROGMEM = {
 void MPU6050_init_DMP()
 {
   i2c_writeBits(MPU6050_ADD, PWR_MGMT_1, 2, 3, 0x01);
-  i2c_write(MPU6050_ADD,ACCEL_CONFIG,0x00);//full scale range mode 0 +- 2g
-  i2c_write(MPU6050_ADD,GYRO_CONFIG,0x00);//full scale range mode 0 +- 250do/s
+  i2c_writeByte(MPU6050_ADD,ACCEL_CONFIG,0x00);//full scale range mode 0 +- 2g
+  i2c_writeByte(MPU6050_ADD,GYRO_CONFIG,0x00);//full scale range mode 0 +- 250do/s
   MPU6050_setSleepEnabled(false);
 
 }
@@ -245,21 +245,21 @@ void MPU6050_setMemoryBank(uint8_t bank, bool prefetchEnabled, bool userBank) {
     bank &= 0x1F;
     if (userBank) bank |= 0x20;
     if (prefetchEnabled) bank |= 0x40;
-    i2c_write(MPU6050_ADD, 0x6D, bank);
+    i2c_writeByte(MPU6050_ADD, 0x6D, bank);
 }
 void MPU6050_setSlaveAddress(uint8_t num, uint8_t address) {
     if (num > 3) { return; }
-    i2c_write(MPU6050_ADD, I2C_SLV0_ADDR + num*3, address);
+    i2c_writeByte(MPU6050_ADD, I2C_SLV0_ADDR + num*3, address);
 }
 void MPU6050_setI2CMasterModeEnabled(bool enabled) {
     i2c_writeBit(MPU6050_ADD, USER_CTRL, 5, enabled);
 }
 void MPU6050_setIntEnabled(uint8_t enabled) {
-    i2c_write(MPU6050_ADD, INT_ENABLE, enabled);
+    i2c_writeByte(MPU6050_ADD, INT_ENABLE, enabled);
 }
 void MPU6050_setMemoryStartAddress(uint8_t address)
 {
-  i2c_write(MPU6050_ADD,MEM_START_ADDR,address);
+  i2c_writeByte(MPU6050_ADD,MEM_START_ADDR,address);
   }
 void MPU6050_resetFIFO() {
     i2c_writeBit(MPU6050_ADD, USER_CTRL, 2, true);
@@ -358,25 +358,26 @@ void MPU6050_getFIFOBytes(uint8_t *data, uint8_t length) {
 uint8_t MPU6050_getOTPBankValid() {
     uint8_t data;
     i2c_read(MPU6050_ADD, 0x00,&data , 1);
-    data = (data >> 0) & 0x01;
+    data = data & (1 << 0);
     return data;
 }
 uint8_t DMP_Init()
 {
-  app_log("\n\nResetting MPU6050...");
+  app_log("\n\nResetting MPU6050...\n");
   MPU6050_reset();
+  sl_sleeptimer_delay_millisecond(30);
   //
-  MPU6050_setSleepEnabled(false);
-  MPU6050_setMemoryBank(0x10, true, true);
-  i2c_write(MPU6050_ADD, 0x6E, 0x06);
+  MPU6050_setSleepEnabled(0);
+  MPU6050_setMemoryBank(0x10, 1, 1);
+  i2c_writeByte(MPU6050_ADD, 0x6E, 0x06);
   app_log("Checking hardware revision...\n");
-  app_log("Revision @ user[16][6] = \n");
+  app_log("Revision @ user[16][6] = ");
   app_log("%d\n",MPU6050_readMemoryByte());
-  MPU6050_setMemoryBank(0, false, false);
+  MPU6050_setMemoryBank(0, 0, 0);
   // check OTP bank valid
   app_log("Reading OTP bank valid flag...\n");
   app_log("OTP bank is :");
-  app_log(MPU6050_getOTPBankValid() ? F("valid!") : F("invalid!"));
+  app_log(MPU6050_getOTPBankValid() ? F("valid!\n") : F("invalid!\n"));
   app_log("Setting slave 0 address to 0x7F...\n");
   MPU6050_setSlaveAddress(0, 0x07);
   MPU6050_setI2CMasterModeEnabled (false);
@@ -390,13 +391,13 @@ uint8_t DMP_Init()
   app_log("Setting DMP and FIFO_OFLOW interrupts enabled...\n");
   MPU6050_setIntEnabled ((1<<4|1<<1));
   app_log("Setting sample rate to 200Hz...\n");
-  i2c_write(MPU6050_ADD, SMPLRT_DIV, 4);
+  i2c_writeByte(MPU6050_ADD, SMPLRT_DIV, 4);
   app_log("Setting external frame sync to TEMP_OUT_L[0]...\n");
   i2c_writeBits (MPU6050_ADD, CONFIG, 5, 3, 0x1);
   app_log("Setting DLPF bandwidth to 42Hz...\n");
   i2c_writeBits (MPU6050_ADD, CONFIG, 2, 3, 0x03);
   app_log("Setting gyro sensitivity to +/- 2000 deg/sec...\n");
-  i2c_write(MPU6050_ADD, GYRO_CONFIG, 0x03); //full scale range mode 0 +- 2000do/s
+  i2c_writeByte(MPU6050_ADD, GYRO_CONFIG, 0x03); //full scale range mode 0 +- 2000do/s
   // load DMP code into memory banks
   if (!writeProgMemoryBlock(dmpMemory, MPU6050_DMP_CODE_SIZE,0,0,true))
     {return 1;}
@@ -405,19 +406,19 @@ uint8_t DMP_Init()
   unsigned char dmpUpdate[] ={ 0x00, 0x01 };
   writeMemoryBlock (dmpUpdate, 0x02, 0x02, 0x16,true,false);
   //write start address MSB into register
-  i2c_write(MPU6050_ADD,DMP_CFG_1,0x03);
+  i2c_writeByte(MPU6050_ADD,DMP_CFG_1,0x03);
   //write start address LSB into register
-  i2c_write (MPU6050_ADD, DMP_CFG_2, 0x00);
+  i2c_writeByte (MPU6050_ADD, DMP_CFG_2, 0x00);
   app_log("Clearing OTP Bank flag...\n");
   i2c_writeBit(MPU6050_ADD, XG_OFFS_TC, 0, false);
   app_log("Setting motion detection threshold to 2...\n");
-  i2c_write(MPU6050_ADD,MOT_THR,2);
+  i2c_writeByte(MPU6050_ADD,MOT_THR,2);
   app_log("Setting zero-motion detection threshold to 156...\n");
-  i2c_write(MPU6050_ADD,ZRMOT_THR,156);
+  i2c_writeByte(MPU6050_ADD,ZRMOT_THR,156);
   app_log("Setting motion detection duration to 80...\n");
-  i2c_write(MPU6050_ADD, MOT_DUR, 80);
+  i2c_writeByte(MPU6050_ADD, MOT_DUR, 80);
   app_log("Setting zero-motion detection duration to 0...");
-  i2c_write(MPU6050_ADD,ZRMOT_DUR,0);
+  i2c_writeByte(MPU6050_ADD,ZRMOT_DUR,0);
   app_log ("Enabling FIFO...\n");
   MPU6050_setFIFOEnabled(true);
 
@@ -438,11 +439,11 @@ uint8_t DMP_Init()
 }
 void MPU6050_Init(void)
 {
-  i2c_write(MPU6050_ADD, SMPLRT_DIV, 0x07);//set sample rate to 8000/(1+7) = 1000Hz
-  i2c_write(MPU6050_ADD, PWR_MGMT_1, 0x00);// wake up MPU6050
+  i2c_writeByte(MPU6050_ADD, SMPLRT_DIV, 0x07);//set sample rate to 8000/(1+7) = 1000Hz
+  i2c_writeByte(MPU6050_ADD, PWR_MGMT_1, 0x00);// wake up MPU6050
   //i2c_write(MPU6050_ADD,CONFIG,0x00);//disable DLPF
-  i2c_write(MPU6050_ADD,ACCEL_CONFIG,0x00);//full scale range mode 0 +- 2g
-  i2c_write(MPU6050_ADD,GYRO_CONFIG,0x00);//full scale range mode 0 +- 250do/s
+  i2c_writeByte(MPU6050_ADD,ACCEL_CONFIG,0x00);//full scale range mode 0 +- 2g
+  i2c_writeByte(MPU6050_ADD,GYRO_CONFIG,0x00);//full scale range mode 0 +- 250do/s
   //i2c_write(MPU6050_ADD,0x74,0x06);//disable sensor output to FIFO buffer
 }
 void MPU6050_Read(void)
@@ -636,7 +637,6 @@ void MPU6050_CalibrateGyro(uint8_t Loops) {
 void MPU6050_ConfigDMP(struct MPU6050_Base *mpu,uint8_t *devStatus,bool *dmpReady,uint8_t *mpuIntStatus,uint16_t *packetSize)
 {
       mpu->dmpPacketSize = 42;
-      mpu->fifoTimeout=MPU6050_FIFO_DEFAULT_TIMEOUT;
       app_log("Initializing I2C devices...\n");
       MPU6050_init_DMP();
       app_log("Initializing DMP...\n");
@@ -718,13 +718,15 @@ void MPU6050_GetData(struct MPU6050_Base *mpu,bool *dmpReady,volatile bool *mpuI
         ay = (aaReal.y) / 16384.0;
         az = (aaReal.z) / 16384.0;
         SVM = sqrt (pow(ax,2) + pow(ay,2) + pow(az,2)) + 1.0;
-        app_log("\t");
-        app_log("%d", (uint16_t )(SVM * 1000));
-        app_log("\t\n");
-        while (SVM > 1.7 && (ypr[2] * 180/M_PI)< 10 )
-        {
-            setLED('r');
-        }
+//        app_log("\t");
+//        app_log("%d", (uint16_t )(SVM * 1000));
+//        app_log("\t\n");
+        app_log("------\n");
+        app_log("%d    %d    %d\n",(uint16_t )(gravity.x * 1000),(uint16_t )(gravity.y * 1000),(uint16_t )(gravity.z * 1000));
+//        while (SVM > 1.7 && (ypr[2] * 180/M_PI)< 10 )
+//        {
+//            set_LED('r');
+//        }
       }
 
 }

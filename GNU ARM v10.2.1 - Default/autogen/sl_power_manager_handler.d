@@ -89,7 +89,8 @@ autogen/sl_power_manager_handler.o: ../autogen/sl_power_manager_handler.c \
  ../autogen/sl_component_catalog.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream.h \
  c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream_uart.h \
- c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream.h
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream.h \
+ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\bluetooth\common\simple_timer\sl_simple_timer.h
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\common\toolchain\inc\sl_gcc_preinclude.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\emlib\inc\em_core.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\device\siliconlabs\bgm22\include\em_device.h:
@@ -181,3 +182,4 @@ c\:\users\admin\simplicitystudio\sdks\gecko_sdk\protocol\bluetooth\inc\sl_bt_api
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream_uart.h:
 c\:\users\admin\simplicitystudio\sdks\gecko_sdk\platform\service\iostream\inc\sl_iostream.h:
+c\:\users\admin\simplicitystudio\sdks\gecko_sdk\app\bluetooth\common\simple_timer\sl_simple_timer.h:
