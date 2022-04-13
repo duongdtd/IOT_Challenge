@@ -135,7 +135,7 @@ SL_WEAK void app_init (void)
   ////	  RTCC_Init(&rtcc);
   ////    RTCC_CounterSet(t);
   ////    sl_app_log("Ok....... \n");
-  sl_bt_system_set_soft_timer(TIMER_MS(1000), TEMPERATURE, 0);
+  sl_bt_system_set_soft_timer(TIMER_MS(2000), TEMPERATURE, 0);
   ////    time_t rawtime = time(NULL);
   ////    struct tm * timeinfo;
   ////
@@ -335,22 +335,23 @@ void process_server_user_write_request(sl_bt_msg_t *evt)
 
 
 	break;
-	//          case sl_bt_evt_system_soft_timer_id:
-	//            if (evt->data.evt_system_soft_timer.handle == TEMPERATURE)
-	//              {
-	//                app_log("%d\n",123);
-	//                sl_sleeptimer_get_datetime(&datetest);
-	//                app_log("date time %d/%d/%d  %d:%d:%d\n",
-	//                        datetest.month_day,
-	//                        datetest.month,
-	//                        datetest.year+1900,
-	//                        datetest.hour,
-	//                        datetest.min,
-	//                        datetest.sec
-	//                        );
-	//
-	//              }
-	//            break;
+	          case sl_bt_evt_system_soft_timer_id:
+	            if (evt->data.evt_system_soft_timer.handle == TEMPERATURE)
+	              {
+//	                app_log("%d\n",123);
+//	                sl_sleeptimer_get_datetime(&datetest);
+//	                app_log("date time %d/%d/%d  %d:%d:%d\n",
+//	                        datetest.month_day,
+//	                        datetest.month,
+//	                        datetest.year+1900,
+//	                        datetest.hour,
+//	                        datetest.min,
+//	                        datetest.sec
+//	                        );
+	        	send_check(&notifyEnabled, &app_connection);
+
+	              }
+	            break;
       case sl_bt_evt_system_external_signal_id:
 	dmpDataReady();
 	break;

@@ -77,6 +77,30 @@ send_data(uint8_t *notifyEnabled,uint8_t *app_connection,float *data,uint8_t typ
     app_log("send erorr\n");
 
 }
+void send_check(uint8_t *notifyEnabled,uint8_t *app_connection)
+{
+ sl_status_t sc;
+ uint16_t len =8;
+ uint8_t buffer[7];
+ buffer[0]= 9;
+ buffer[1]= 23;
+ buffer[2]= 45;
+ buffer[3]= 19;
+ buffer[4]= 122;
+ buffer[5]= 97;
+ buffer[6]= 12;
+ buffer[7]= 239;
+ if( *notifyEnabled)
+   {
+ sc =sl_bt_gatt_server_send_notification(*app_connection, gattdb_data_ch, len, buffer);
+   }
+ if (sc == SL_STATUS_OK)
+   {
+     app_log("send ok\n");
+   }
+ else
+   app_log("send erorr\n");
+}
 void send_all_data(uint8_t *notifyEnabled,uint8_t *app_connection,float *temperature, float *spo2, float *bmp)
 {
   sl_status_t sc;
